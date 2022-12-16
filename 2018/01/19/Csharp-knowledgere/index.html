@@ -1,0 +1,1645 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="C#/.NET Web 部分复习总结（面试常问）, NS96,楠槡,游梦,游梦的博客">
+    <meta name="description" content="Ns96 | Raphael&#39;s blog | 游梦的博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>C#/.NET Web 部分复习总结（面试常问） | 木子楠槡</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">木子楠槡</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">木子楠槡</div>
+        <div class="logo-desc">
+            
+            Ns96 | Raphael&#39;s blog | 游梦的博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">C#/.NET Web 部分复习总结（面试常问）</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+    
+    #articleContent :focus {
+        outline: none;
+    }
+    
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+    
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+    
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+    
+    #toc-content ol {
+        padding-left: 10px;
+    }
+    
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+    
+    #toc-content .toc-link:hover {
+        color: #5db4cd;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+    
+    #toc-content .is-active-link {
+        color: #5db4cd;
+    }
+    
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+    
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+    
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/dotNET/">
+                                <span class="chip bg-color">dotNET</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-01-19
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-12-16
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    18 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="C"><a href="#C" class="headerlink" title="C#"></a><strong>C#</strong></h1><h2 id="NET和C-有什么区别"><a href="#NET和C-有什么区别" class="headerlink" title=".NET和C#有什么区别"></a>.NET和C#有什么区别</h2><p>.NET一般指 .NET FrameWork框架，它是一种平台，一种技术。理论上，各种语言都可以编译成它的IL，在上面运行。.NET开发，就是把它当作目标平台的开发。</p>
+<p>C#是一种编程语言，可以基于.NET平台的应用。</p>
+<h2 id="值类型和引用类型的区别"><a href="#值类型和引用类型的区别" class="headerlink" title="值类型和引用类型的区别?"></a>值类型和引用类型的区别?</h2><p>在C#中值类型的变量直接存储数据，而引用类型的变量持有的是数据的引用，数据存储在数据堆中。</p>
+<blockquote>
+<p>值类型（value type）：byte，short，int，long，float，double，decimal，char，bool 和 struct 统称为值类型。值类型变量声明后，不管是否已经赋值，编译器为其分配内存。  </p>
+</blockquote>
+<blockquote>
+<p>引用类型（reference type）：string 和 class统称为引用类型。当声明一个类时，只在栈中分配一小片内存用于容纳一个地址，而此时并没有为其分配堆上的内存空间。当使用 new 创建一个类的实例时，分配堆上的空间，并把堆上空间的地址保存到栈上分配的小片空间中。  </p>
+</blockquote>
+<p>值类型的实例通常是在线程栈上分配的（静态分配），但是在某些情形下可以存储在堆中。引用类型的对象总是在进程堆中分配（动态分配）。  </p>
+<p><strong>总结一句话</strong>：c#的值类型是为变量在栈上分配了一块内存，用于存储数据，而引用类型分为两部分，声明时只在栈上分配了一小部分内存，堆上没分配，而new引用变量时，是在堆上分配了一块内存，存储的是栈上的内存地址，注意：struct是值类型，string和class是引用类型，string不需要new是因为想要语义化“字符串”,省略创建过程。  </p>
+<p><img src="/2018/01/19/Csharp-knowledgere/typesystem.png" alt="typesystem"></p>
+<h2 id="什么是装箱和拆箱？"><a href="#什么是装箱和拆箱？" class="headerlink" title="什么是装箱和拆箱？"></a>什么是装箱和拆箱？</h2><p>装箱（boxing）和拆箱（unboxing）是C#类型系统的核心概念.是不同于C与C++的新概念！,通过装箱和拆箱操作，能够在值类型和引用类型中架起一做桥梁.换言之,可以轻松的实现值类型与引用类型的互相转换,装箱和拆箱能够统一考察系统,任何类型的值最终都可以按照对象进行处理.</p>
+<p>装箱就是隐式的将一个值型转换为引用型对象。比如：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token class-name"><span class="token keyword">int</span></span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token class-name">Syste<span class="token punctuation">.</span>Object</span> obj<span class="token operator">=</span>i<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>这个过程就是装箱！就是将i装箱！</p>
+<p>拆箱就是将一个引用型对象转换成任意值型！比如：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token class-name"><span class="token keyword">int</span></span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token class-name">System<span class="token punctuation">.</span>Object</span> obj<span class="token operator">=</span>i<span class="token punctuation">;</span>
+<span class="token class-name"><span class="token keyword">int</span></span> j<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>obj<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这个过程前2句是将i装箱，后一句是将obj拆箱！</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token class-name"><span class="token keyword">int</span></span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token class-name">System<span class="token punctuation">.</span>Object</span> obj<span class="token operator">=</span>i<span class="token punctuation">;</span>
+Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>上述代码共发生了3次装箱和一次拆箱！</p>
+<h2 id="C-递归是什么？"><a href="#C-递归是什么？" class="headerlink" title="C# 递归是什么？"></a>C# 递归是什么？</h2><p>在数学与计算机科学中，递归是指在函数的定义中使用函数自身的方法。</p>
+<p>递归算法是一种直接或者间接地调用自身算法的过程。在计算机编写程序中，递归算法对解决一大类问题是十分有效的，它往往使算法的描述简洁而且易于理解。</p>
+<p>递归算法解决问题的特点：</p>
+<ul>
+<li> 递归就是在过程或函数里调用自身。</li>
+<li>在使用递归策略时，必须有一个明确的递归结束条件，称为递归出口。</li>
+<li>递归算法解题通常显得很简洁，但递归算法解题的运行效率较低。所以一般不提倡用递归算法设计程序。</li>
+<li>在递归调用的过程当中系统为每一层的返回点、局部量等开辟了栈来存储。递归次数过多容易造成栈溢出等。所以一般不提倡用递归算法设计程序。在实际编程中尤其要注意栈溢出问题。</li>
+</ul>
+<p>借助递归方法，我们可以把一个相对复杂的问题转化为一个与原问题相似的规模较小的问题来求解，递归方法只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。但在带来便捷的同时，也会有一些缺点，也即：通常用递归方法的运行效率不高。</p>
+<p><strong>简言之：</strong> 递归就是一个可以自我调用的函数或则方法。</p>
+<hr>
+<p><strong>以Fibonacci数列和阶乘为例：</strong></p>
+<h2 id="Fibonacci"><a href="#Fibonacci" class="headerlink" title="Fibonacci"></a>Fibonacci</h2><blockquote>
+<p>斐波那契数列就是如下的数列：0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, …<br>总之，就是第N(N &gt; 2)个数等于第(N - 1)个数和(N - 2)个数的和。</p>
+</blockquote>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">Fibonacci</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">Fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">Fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="阶乘"><a href="#阶乘" class="headerlink" title="阶乘"></a>阶乘</h2><blockquote>
+<p>阶乘公式： n!=1×2×3×…×n</p>
+</blockquote>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">Factorial</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> n<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token class-name"><span class="token keyword">int</span></span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span> <span class="token operator">==</span> n<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        sum <span class="token operator">=</span> n <span class="token operator">*</span> <span class="token function">Factorial</span><span class="token punctuation">(</span>n <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>C# 语言和公共语言运行时 (CLR) 的 2.0 版本中添加了泛型。 泛型将类型参数的概念引入 .NET Framework，这样就可以设计具有以下特征的类和方法：<strong>在客户端代码声明并初始化这些类和方法之前，这些类和方法会延迟指定一个或多个类型。</strong></p>
+<p>例如，通过使用泛型类型参数 <code>T</code>，可以编写其他客户端代码能够使用的单个类，而不会产生运行时转换或装箱操作的成本或风险，如下所示：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token comment">// Declare the generic class.</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GenericList<span class="token punctuation">&lt;</span>T<span class="token punctuation">&gt;</span></span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Add</span><span class="token punctuation">(</span><span class="token class-name">T</span> input<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">class</span> <span class="token class-name">TestGenericList</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">class</span> <span class="token class-name">ExampleClass</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+    <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment">// Declare a list of type int.</span>
+        <span class="token class-name">GenericList<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span> list1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">GenericList<span class="token punctuation">&lt;</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list1<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Declare a list of type string.</span>
+        <span class="token class-name">GenericList<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span> list2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">GenericList<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list2<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Declare a list of type ExampleClass.</span>
+        <span class="token class-name">GenericList<span class="token punctuation">&lt;</span>ExampleClass<span class="token punctuation">&gt;</span></span> list3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">GenericList<span class="token punctuation">&lt;</span>ExampleClass<span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        list3<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">ExampleClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>使用泛型类型可以最大限度地重用代码、保护类型安全性以及提高性能。</p>
+</li>
+<li><p>泛型最常见的用途是创建集合类。</p>
+</li>
+<li><p>.NET Framework 类库在 System.Collections.Generic 命名空间中包含几个新的泛型集合类。 应尽可能使用这些类来代替某些类，如 System.Collections 命名空间中的 ArrayList。</p>
+</li>
+<li><p>可以创建自己的泛型接口、泛型类、泛型方法、泛型事件和泛型委托。</p>
+</li>
+<li><p>可以对泛型类进行约束以访问特定数据类型的方法。</p>
+</li>
+<li><p>在泛型数据类型中所用类型的信息可在运行时通过使用反射来获取。</p>
+</li>
+</ul>
+<h2 id="委托，事件与回调函数"><a href="#委托，事件与回调函数" class="headerlink" title="委托，事件与回调函数"></a>委托，事件与回调函数</h2><p>先说下什么是委托，顾名思义，就是自己不完成，让别人帮你完成！</p>
+<p>换成大白话：我遇到了一个问题，我不知道怎么解决，但是我接下来要做的事情需要这个问题的结果作为前提，我就去找一个人来帮我得出结论，岂不美哉。</p>
+<p>在C#中，委托的作用是这样描述的：委托就像一个函数的指针，在程序运行时可以使用它们来调用不同的函数。</p>
+<h3 id="简单的委托"><a href="#简单的委托" class="headerlink" title="简单的委托"></a>简单的委托</h3><p>那委托需要承载哪些信息呢？</p>
+<p>首先，它存储了方法名，还有参数列表(方法签名),以及返回的类型。比如：</p>
+<pre class="line-numbers language-none"><code class="language-none">delegate string/*返回类型*/ ProcessDelegate(int i);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这就是一个委托的定义。<code>delegate</code> 是声明委托的关键字，<code>string</code> 是返回的类型，而<code>ProcessDelegate(int i)</code>是委托的类型名，和一个类名差不多，而<code>()</code>里的就是参数部分。</p>
+<p>翻译一下，你要使用这个委托来做事情的话，那么，做事情的方法必须满足以下条件：</p>
+<ol>
+<li>返回类型和委托的返回类型一致，这里是string类型；</li>
+<li>能且只能有一个参数，并且是int类型。</li>
+</ol>
+<p>示例：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Text</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">namespace</span> <span class="token namespace">TestApp</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">delegate</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">ProcessDelegate</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">/*  调用方法  */</span>
+           <span class="token class-name">ProcessDelegate</span> pd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProcessDelegate</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Process<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token function">pd</span><span class="token punctuation">(</span><span class="token string">"Text1"</span><span class="token punctuation">,</span> <span class="token string">"Text2"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+ 
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Process</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span><span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+             <span class="token keyword">return</span> s1 <span class="token operator">+</span> s2<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>输出的结果是: Text1Tex2</p>
+</blockquote>
+<h3 id="泛型委托"><a href="#泛型委托" class="headerlink" title="泛型委托"></a>泛型委托</h3><p>将上面的简单委托修改为泛型委托</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Text</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">namespace</span> <span class="token namespace">TestApp</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">delegate</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token generic-method"><span class="token function">ProcessDelegate</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>T<span class="token punctuation">,</span>S<span class="token punctuation">&gt;</span></span></span><span class="token punctuation">(</span><span class="token class-name">T</span> s1<span class="token punctuation">,</span> <span class="token class-name">S</span> s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">/*  调用方法  */</span>
+           <span class="token class-name">ProcessDelegate</span> pd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProcessDelegate<span class="token punctuation">&lt;</span><span class="token keyword">string</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Process<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span><span class="token function">pd</span><span class="token punctuation">(</span><span class="token string">"Text1"</span><span class="token punctuation">,</span> <span class="token string">"666"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+ 
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Process</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span><span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+             <span class="token keyword">return</span> s1 <span class="token operator">+</span> s2<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出的结果就是：<br>Text666</p>
+<h3 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h3><p>在某件事情发生时，一个对象可以通过事件通知另一个对象。</p>
+<p>在C#中，时间定义关键字是event。<br>例如：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">event</span> <span class="token class-name">ProcessDelegate</span> ProcessEvent<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>整个事件定义方法以及执行过程：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Text</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">TestApp</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary&gt;</span>
+    <span class="token comment">/// 委托</span>
+    <span class="token comment">/// &lt;/summary&gt;</span>
+    <span class="token comment">/// &lt;param name="s1"&gt;&lt;/param&gt;</span>
+    <span class="token comment">/// &lt;param name="s2"&gt;&lt;/param&gt;</span>
+    <span class="token comment">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="token keyword">public</span> <span class="token keyword">delegate</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">ProcessDelegate</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> sender<span class="token punctuation">,</span> <span class="token class-name">EventArgs</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        
+
+        <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">/*  第一步执行  */</span>
+            <span class="token class-name">Test</span> t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">/* 关联事件方法，相当于寻找到了委托人 */</span>
+            t<span class="token punctuation">.</span>ProcessEvent <span class="token operator">+=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProcessDelegate</span><span class="token punctuation">(</span>t_ProcessEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">/* 进入Process方法 */</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span><span class="token function">Process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+
+            Console<span class="token punctuation">.</span><span class="token function">Read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">t_ProcessEvent</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> sender<span class="token punctuation">,</span> <span class="token class-name">EventArgs</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token class-name">Test</span> t <span class="token operator">=</span> <span class="token punctuation">(</span>Test<span class="token punctuation">)</span>sender<span class="token punctuation">;</span>
+            t<span class="token punctuation">.</span>Text1 <span class="token operator">=</span> <span class="token string">"Hello"</span><span class="token punctuation">;</span>
+            t<span class="token punctuation">.</span>Text2 <span class="token operator">=</span> <span class="token string">"World"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Text1
+        <span class="token punctuation">{</span>
+            <span class="token keyword">get</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> s1<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+            <span class="token keyword">set</span> <span class="token punctuation">{</span> s1 <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">private</span> <span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">;</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> Text2
+        <span class="token punctuation">{</span>
+            <span class="token keyword">get</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> s2<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+            <span class="token keyword">set</span> <span class="token punctuation">{</span> s2 <span class="token operator">=</span> <span class="token keyword">value</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+
+        <span class="token keyword">public</span> <span class="token keyword">event</span> <span class="token class-name">ProcessDelegate</span> ProcessEvent<span class="token punctuation">;</span>
+
+        <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">ProcessAction</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> sender<span class="token punctuation">,</span> <span class="token class-name">EventArgs</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>ProcessEvent <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
+                ProcessEvent <span class="token operator">+=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProcessDelegate</span><span class="token punctuation">(</span>t_ProcessEvent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">ProcessEvent</span><span class="token punctuation">(</span>sender<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">//如果没有自己指定关联方法，将会调用该方法抛出错误</span>
+        <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">t_ProcessEvent</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">object</span></span> sender<span class="token punctuation">,</span> <span class="token class-name">EventArgs</span> e<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Exception</span><span class="token punctuation">(</span><span class="token string">"The method or operation is not implemented."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnProcess</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">ProcessAction</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> EventArgs<span class="token punctuation">.</span>Empty<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Process</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token function">OnProcess</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> s1 <span class="token operator">+</span> s2<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>相当于是可以用任意符合委托接口(委托确实很像接口)的代码，注入到Process过程。在他返回之前给他赋值。</p>
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>回调函数就是把一个方法的传给另外一个方法去执行。在C#有很多回调函数，比如异步操作的时候。<br>这里先举个例子：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Collections<span class="token punctuation">.</span>Generic</span><span class="token punctuation">;</span>
+<span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Text</span><span class="token punctuation">;</span>
+
+<span class="token keyword">namespace</span> <span class="token namespace">TestApp</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/// &lt;summary&gt;</span>
+    <span class="token comment">/// 委托</span>
+    <span class="token comment">/// &lt;/summary&gt;</span>
+    <span class="token comment">/// &lt;param name="s1"&gt;&lt;/param&gt;</span>
+    <span class="token comment">/// &lt;param name="s2"&gt;&lt;/param&gt;</span>
+    <span class="token comment">/// &lt;returns&gt;&lt;/returns&gt;</span>
+    <span class="token keyword">public</span> <span class="token keyword">delegate</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">ProcessDelegate</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">class</span> <span class="token class-name">Program</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> args<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment">/*  调用方法  */</span>
+            <span class="token class-name">Test</span> t <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name"><span class="token keyword">string</span></span> r1 <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">Process</span><span class="token punctuation">(</span><span class="token string">"Text1"</span><span class="token punctuation">,</span> <span class="token string">"Text2"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProcessDelegate</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>Process1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name"><span class="token keyword">string</span></span> r2 <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">Process</span><span class="token punctuation">(</span><span class="token string">"Text1"</span><span class="token punctuation">,</span> <span class="token string">"Text2"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProcessDelegate</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>Process2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name"><span class="token keyword">string</span></span> r3 <span class="token operator">=</span> t<span class="token punctuation">.</span><span class="token function">Process</span><span class="token punctuation">(</span><span class="token string">"Text1"</span><span class="token punctuation">,</span> <span class="token string">"Text2"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ProcessDelegate</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>Process3<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>r1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>r2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Console<span class="token punctuation">.</span><span class="token function">WriteLine</span><span class="token punctuation">(</span>r3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Process</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span><span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">,</span><span class="token class-name">ProcessDelegate</span> process<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token function">process</span><span class="token punctuation">(</span>s1<span class="token punctuation">,</span> s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Process1</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> s1 <span class="token operator">+</span> s2<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Process2</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> s1 <span class="token operator">+</span> Environment<span class="token punctuation">.</span>NewLine <span class="token operator">+</span> s2<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">string</span></span> <span class="token function">Process3</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span></span> s1<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">string</span></span> s2<span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> s2 <span class="token operator">+</span> s1<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出结果：<br>Text1Text2<br>Text1<br>Text2<br>Text2Text1</p>
+<p>Process方法调用了一个回调函数，当然这里只执行了回调函数。可以看出，可以把任意一个符合这个委托的方法传递进去，意思就是说这部分代码是可变的。而设计上有一个抽离出可变部分代码的原则，这种用法无疑可以用到那种场合了。</p>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>匿名函数是一个“内联”语句或表达式，可在需要委托类型的任何地方使用。 可以使用匿名函数来初始化命名委托，或传递命名委托（而不是命名委托类型）作为方法参数。</p>
+<p>C# 中的匿名函数包括，Lambda表达式和匿名方法两种用法：</p>
+<h3 id="Lambda-表达式"><a href="#Lambda-表达式" class="headerlink" title="Lambda 表达式"></a>Lambda 表达式</h3><p>Lambda 表达式是一种可用于创建 委托 或 表达式目录树 类型的 匿名函数 。 通过使用 lambda 表达式，可以写入可作为参数传递或作为函数调用值返回的本地函数。 Lambda 表达式对于编写 LINQ 查询表达式特别有用。</p>
+<p>实例： </p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token keyword">delegate</span> <span class="token return-type class-name"><span class="token keyword">int</span></span> <span class="token function">del</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+<span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Main</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> args<span class="token punctuation">)</span>  
+<span class="token punctuation">{</span>  
+    <span class="token class-name">del</span> myDelegate <span class="token operator">=</span> x <span class="token operator">=&gt;</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>  
+    <span class="token class-name"><span class="token keyword">int</span></span> j <span class="token operator">=</span> <span class="token function">myDelegate</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//j = 25  </span>
+<span class="token punctuation">}</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Lambda 表达式更多用法参照 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions">MSDN-Lambda表达式</a></p>
+<h3 id="匿名方法"><a href="#匿名方法" class="headerlink" title="匿名方法"></a>匿名方法</h3><p>创建匿名方法实际上是一种将代码块作为委托参数传递的方式。在 C# 3.0 及更高版本中，Lambda 表达式取代匿名方法作为编写内联代码的首选方式。</p>
+<p>实例：</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token comment">// Create a handler for a click event.</span>
+button1<span class="token punctuation">.</span>Click <span class="token operator">+=</span> <span class="token keyword">delegate</span><span class="token punctuation">(</span><span class="token class-name">System<span class="token punctuation">.</span>Object</span> o<span class="token punctuation">,</span> <span class="token class-name">System<span class="token punctuation">.</span>EventArgs</span> e<span class="token punctuation">)</span>
+                   <span class="token punctuation">{</span> System<span class="token punctuation">.</span>Windows<span class="token punctuation">.</span>Forms<span class="token punctuation">.</span>MessageBox<span class="token punctuation">.</span><span class="token function">Show</span><span class="token punctuation">(</span><span class="token string">"Click!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Create a delegate.</span>
+<span class="token keyword">delegate</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">Del</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Instantiate the delegate using an anonymous method.</span>
+<span class="token class-name">Del</span> d <span class="token operator">=</span> <span class="token keyword">delegate</span><span class="token punctuation">(</span><span class="token class-name"><span class="token keyword">int</span></span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于使用匿名方法无需创建单独的方法，因此可减少对委托进行实例化的编码开销。</p>
+<h2 id="简述-private、-protected、-public、internal-修饰符的访问权限。"><a href="#简述-private、-protected、-public、internal-修饰符的访问权限。" class="headerlink" title="简述 private、 protected、 public、internal 修饰符的访问权限。"></a>简述 private、 protected、 public、internal 修饰符的访问权限。</h2><p>private : 私有成员, 在类的内部才可以访问。</p>
+<p>protected: 保护成员，该类内部和继承类中可以访问。</p>
+<p>public: 公共成员，完全公开，没有访问限制。</p>
+<p>internal:在同一命名空间内可以访问。</p>
+<h2 id="override与重载的区别"><a href="#override与重载的区别" class="headerlink" title="override与重载的区别"></a>override与重载的区别</h2><p>override 与重载的区别。重载是方法的名称相同。参数或参数类型不同，进行多次重载以适应不同的需要</p>
+<p>Override是进行基类中函数的重写。为了适应需要。</p>
+<h2 id="CTS、CLS、CLR分别作何解释？"><a href="#CTS、CLS、CLR分别作何解释？" class="headerlink" title="CTS、CLS、CLR分别作何解释？"></a>CTS、CLS、CLR分别作何解释？</h2><ul>
+<li>CTS是通用类型系统(Common Type System)</li>
+<li>CLR是公共语言运行时(Common language runtime)</li>
+<li>CLS是公共语言定义(Common Language Specification) </li>
+</ul>
+<h2 id="GC是什么-为什么要有GC"><a href="#GC是什么-为什么要有GC" class="headerlink" title="GC是什么? 为什么要有GC?"></a>GC是什么? 为什么要有GC?</h2><p>GC是垃圾收集器。程序员不用担心内存管理，因为垃圾收集器会自动进行管理。要请求垃圾收集，可以调用下面的方法之一：</p>
+<ul>
+<li><code>System.gc()</code></li>
+<li><code>Runtime.getRuntime().gc()</code></li>
+</ul>
+<h2 id="进程和线程的区别？"><a href="#进程和线程的区别？" class="headerlink" title="进程和线程的区别？"></a>进程和线程的区别？</h2><h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>进程是系统进行资源分配和调度的单位,当运行.NET程序时，进程会把被称为CLR的软件层包含到它的内存空间中;</p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>线程是CPU调度和分派的单位，一个进程可以有多个线程，这些线程共享这个进程的资源。<br>一个线程包含以下内容：</p>
+<ul>
+<li>一个指向当前被执行指令的指令指针；</li>
+<li>一个栈；</li>
+<li>一个寄存器值的集合，定义了一部分描述正在执行线程的处理器状态的值；</li>
+<li>一个私有的数据区。</li>
+</ul>
+<p>所有这些元素都归于线程执行上下文的名下。处在同一个进程中的所有线程都可以访问该进程所包含的地址空间，当然也包含存储在该空间中的所有资源。</p>
+<h2 id="堆和栈的区别？"><a href="#堆和栈的区别？" class="headerlink" title="堆和栈的区别？"></a>堆和栈的区别？</h2><p>栈：由编译器自动分配、释放。在函数体中定义的变量通常在栈上。<br>堆：一般由程序员分配释放。用new、malloc等分配内存函数分配得到的就是在堆上。</p>
+<hr>
+<h1 id="ASP-NET"><a href="#ASP-NET" class="headerlink" title="ASP.NET"></a><strong>ASP.NET</strong></h1><h2 id="静态网页和动态网页的执行过程及其异同"><a href="#静态网页和动态网页的执行过程及其异同" class="headerlink" title="静态网页和动态网页的执行过程及其异同"></a>静态网页和动态网页的执行过程及其异同</h2><p><strong>静态网页</strong>：在网站设计中，纯粹HTML 格式的网页通常被称为“静态网页”。 </p>
+<p>其执行过程如下：  </p>
+<ul>
+<li>用户在客户端将HTML文件的网址输入到浏览器的地址栏，请求一个HTML网页。 </li>
+<li>Web浏览器向Web服务器发送HTML文件请求，称为Request（请求）。  </li>
+<li>Web服务器找到该HTML文件，将其传送给用户浏览器，称为Response（响应）。</li>
+<li>用户的Web浏览器解释HTML文件，结果在Web浏览器中显示。   </li>
+</ul>
+<p><strong>动态网页</strong>：是采用ASP、ASP.NET、JSP或PHP等语言动态生成的网页，在接到用户访请求后生成网页并传输到用户的浏览器。 </p>
+<p>其执行过程如下： </p>
+<ul>
+<li>用户在客户端将一个网址输入到浏览器的地址栏，请求一个Web网页。</li>
+<li>Web浏览器向Web服务器发送Web网页请求，称为Request（请求）。</li>
+<li>Web服务器找到该ASP.NET文件对其进行解释并生成标准的HTML文件。</li>
+<li>Web浏览器将HTML文件传送给用户浏览器，称为Response（响应）。 用户的Web浏览器解释HTML文件，结果在Web浏览器中显示。</li>
+</ul>
+<h2 id="列举ASP-NET页面之间传递值的几种方式。"><a href="#列举ASP-NET页面之间传递值的几种方式。" class="headerlink" title="列举ASP.NET页面之间传递值的几种方式。"></a>列举ASP.NET页面之间传递值的几种方式。</h2><ul>
+<li>使用QueryString, 如….?id=1; response. Redirect()…. </li>
+<li>使用Session变量 </li>
+<li>使用Server.Transfer</li>
+</ul>
+<h2 id="如和让-JavaScript-按-ID-访问-ASP-NET-控件"><a href="#如和让-JavaScript-按-ID-访问-ASP-NET-控件" class="headerlink" title="如和让 JavaScript 按 ID 访问 ASP.NET 控件"></a>如和让 JavaScript 按 ID 访问 ASP.NET 控件</h2><p>从客户端脚本访问控件的一种方法是将服务器控件的 ClientID 属性值传递给 document.getElementById 方法。 ClientID 属性值在 HTML 中以 id 特性的形式呈现。</p>
+<pre class="line-numbers language-cs" data-language="cs"><code class="language-cs"><span class="token operator">&lt;</span><span class="token operator">%</span>@ <span class="token class-name">Control</span> AutoEventWireup<span class="token operator">=</span><span class="token string">"true"</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token class-name">script</span> type<span class="token operator">=</span><span class="token string">"text/javascript"</span><span class="token operator">&gt;</span>
+  <span class="token class-name"><span class="token keyword">var</span></span> seasonalSports <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">Array</span><span class="token punctuation">(</span><span class="token string">"None selected"</span><span class="token punctuation">,</span>
+                                 <span class="token string">"Tennis"</span><span class="token punctuation">,</span>
+                                 <span class="token string">"Volleyball"</span><span class="token punctuation">,</span>
+                                 <span class="token string">"Baseball"</span><span class="token punctuation">,</span>
+                                 <span class="token string">"Skiing"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token return-type class-name">function</span> <span class="token function">DisplaySport</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"SelectedSport"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML
+      <span class="token operator">=</span> seasonalSports<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>    
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>asp<span class="token punctuation">:</span><span class="token class-name">DropDownList</span> ID<span class="token operator">=</span><span class="token string">"DropDownList1"</span> runat<span class="token operator">=</span><span class="token string">"server"</span> 
+                  onchange<span class="token operator">=</span><span class="token string">"DisplaySport(this.selectedIndex);"</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>asp<span class="token punctuation">:</span><span class="token class-name">ListItem</span> Value<span class="token operator">=</span><span class="token string">"Select a season"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>asp<span class="token punctuation">:</span>ListItem<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>asp<span class="token punctuation">:</span><span class="token class-name">ListItem</span> Value<span class="token operator">=</span><span class="token string">"Spring"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>asp<span class="token punctuation">:</span>ListItem<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>asp<span class="token punctuation">:</span><span class="token class-name">ListItem</span> Value<span class="token operator">=</span><span class="token string">"Summer"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>asp<span class="token punctuation">:</span>ListItem<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>asp<span class="token punctuation">:</span><span class="token class-name">ListItem</span> Value<span class="token operator">=</span><span class="token string">"Autumn"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>asp<span class="token punctuation">:</span>ListItem<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>asp<span class="token punctuation">:</span><span class="token class-name">ListItem</span> Value<span class="token operator">=</span><span class="token string">"Winter"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>asp<span class="token punctuation">:</span>ListItem<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>asp<span class="token punctuation">:</span>DropDownList<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>br <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>asp<span class="token punctuation">:</span><span class="token class-name">Label</span> ID<span class="token operator">=</span><span class="token string">"SelectedSport"</span> runat<span class="token operator">=</span><span class="token string">"server"</span> ClientIDMode<span class="token operator">=</span><span class="token string">"Static"</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>asp<span class="token punctuation">:</span>Label<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参考<a target="_blank" rel="noopener" href="https://msdn.microsoft.com/zh-cn/library/dd410598%28v=vs.100%29.aspx?f=255&amp;MSPPError=-2147217396">MSDN</a></p>
+<h2 id="什么叫做SQL注入，如何防止？"><a href="#什么叫做SQL注入，如何防止？" class="headerlink" title="什么叫做SQL注入，如何防止？"></a>什么叫做SQL注入，如何防止？</h2><blockquote>
+<p>所谓SQL注入，就是通过把SQL命令插入到表单窗体递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行一些恶意的SQL命令。通过递交参数构造巧妙的SQL语句，从而成功获取想要的数据。</p>
+</blockquote>
+<p>从具体而言，SQL注入可分为五大类，分别是：</p>
+<ul>
+<li>数字型注入</li>
+<li>字符型注入</li>
+<li>搜索型注入（like）</li>
+<li>in型的注入</li>
+<li>句语连接型注入。</li>
+</ul>
+<p>从应用来说，要特别注意IP、搜索、批量删除、从数据库转到数据库等地方的SQL注入。</p>
+<p>解决方案：</p>
+<ul>
+<li>筛选信息，敏感字符串过滤</li>
+<li>使用存储过程进行参数化查询</li>
+</ul>
+<blockquote>
+<p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/lisenyang/article/details/47444319">ASP.NET防止Sql注入的解决方法</a></p>
+</blockquote>
+<hr>
+<h1 id="ADO-NET"><a href="#ADO-NET" class="headerlink" title="ADO.NET"></a><strong>ADO.NET</strong></h1><h2 id="ADO-NET中读写数据库需要用到哪些类-他们的作用"><a href="#ADO-NET中读写数据库需要用到哪些类-他们的作用" class="headerlink" title="ADO.NET中读写数据库需要用到哪些类?他们的作用?"></a>ADO.NET中读写数据库需要用到哪些类?他们的作用?</h2><blockquote>
+<p>ADO.NET是微软新一代.NET数据库的访问架构，ADO是ActiveX Data Objects的缩写。ADO.NET是数据库应用程序和数据源之间沟通的桥梁，主要提供一个面向对象的数据访问架构，用来开发数据库应用程序。  </p>
+</blockquote>
+<p><img src="/2018/01/19/Csharp-knowledgere/adodataset.png" alt="ADO&amp;DataSet"></p>
+<p> .NET Framework 数据提供程序的四个核心对象:  </p>
+<table>
+<thead>
+<tr>
+<th align="center">对象</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Connection</td>
+<td align="left">建立与特定数据源的连接。 所有 Connection 对象的基类均为 DbConnection 类。</td>
+</tr>
+<tr>
+<td align="center">Command</td>
+<td align="left">对数据源执行命令。 公开 Parameters，并可在 Transaction 范围内从 Connection 执行。 所有 Command 对象的基类均为 DbCommand 类。</td>
+</tr>
+<tr>
+<td align="center">DataReader</td>
+<td align="left">从数据源中读取只进且只读的数据流。 所有 DataReader 对象的基类均为 DbDataReader 类。</td>
+</tr>
+<tr>
+<td align="center">DataAdapter</td>
+<td align="left">使用数据源填充 DataSet 并解决更新。 所有 DataAdapter 对象的基类均为 DbDataAdapter 类。</td>
+</tr>
+</tbody></table>
+<hr>
+<p><strong>如何理解其关系</strong>：通俗来说，可以这样理解——<code>Connection</code> 建立与数据源的链接，然后使用 <code>Command</code> 来对数据源进行 <code>CRUD</code> 的操作， <code>DataReader</code> 则是一个用于读取数据信息的工具 ，最终通过 <code>DataAdapter</code> 将数据填入 DataSet 数据集，最终展现出来。  </p>
+<p><strong>实际项目中</strong>：在实际项目中，通常先将数据库的连接池写入 config 中，然后再项目中引用 config 设置，同时配置号 SqlHelper 类来方便数据的 CRUD 操作。  </p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">游梦</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ns96.com/2018/01/19/Csharp-knowledgere/">https://ns96.com/2018/01/19/Csharp-knowledgere/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">游梦</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/dotNET/">
+                                    <span class="chip bg-color">dotNET</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban,linkedin,twitter,facebook,google" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">如果你觉得不错，可以赏我一杯咖啡，当然，也可以是一杯肥宅快乐水。</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/01/20/docker-img/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Docker 曲径通幽">
+                        
+                        <span class="card-title">Docker 曲径通幽</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-01-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            游梦
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Docker/">
+                        <span class="chip bg-color">Docker</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/01/14/python-notebook/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Python开发环境—— jupyter Notebook 安装使用">
+                        
+                        <span class="card-title">Python开发环境—— jupyter Notebook 安装使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2018-01-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            游梦
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Other/">
+                        <span class="chip bg-color">Other</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 木子楠槡<br />'
+            + '文章作者: 游梦<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;
+                目录
+            </div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+    
+
+        <script src="/libs/tocbot/tocbot.min.js"></script>
+        <script>
+            $(function() {
+                tocbot.init({
+                    tocSelector: '#toc-content',
+                    contentSelector: '#articleContent',
+                    headingsOffset: -($(window).height() * 0.4 - 45),
+                    collapseDepth: Number('0'),
+                    headingSelector: 'h2, h3, h4'
+                });
+
+                // modify the toc link href to support Chinese.
+                let i = 0;
+                let tocHeading = 'toc-heading-';
+                $('#toc-content a').each(function() {
+                    $(this).attr('href', '#' + tocHeading + (++i));
+                });
+
+                // modify the heading title id to support Chinese.
+                i = 0;
+                $('#articleContent').children('h2, h3, h4').each(function() {
+                    $(this).attr('id', tocHeading + (++i));
+                });
+
+                // Set scroll toc fixed.
+                let tocHeight = parseInt($(window).height() * 0.4 - 64);
+                let $tocWidget = $('.toc-widget');
+                $(window).scroll(function() {
+                    let scroll = $(window).scrollTop();
+                    /* add post toc fixed. */
+                    if (scroll > tocHeight) {
+                        $tocWidget.addClass('toc-fixed');
+                    } else {
+                        $tocWidget.removeClass('toc-fixed');
+                    }
+                });
+
+                
+                /* 修复文章卡片 div 的宽度. */
+                let fixPostCardWidth = function(srcId, targetId) {
+                    let srcDiv = $('#' + srcId);
+                    if (srcDiv.length === 0) {
+                        return;
+                    }
+
+                    let w = srcDiv.width();
+                    if (w >= 450) {
+                        w = w + 21;
+                    } else if (w >= 350 && w < 450) {
+                        w = w + 18;
+                    } else if (w >= 300 && w < 350) {
+                        w = w + 16;
+                    } else {
+                        w = w + 14;
+                    }
+                    $('#' + targetId).width(w);
+                };
+
+                // 切换TOC目录展开收缩的相关操作.
+                const expandedClass = 'expanded';
+                let $tocAside = $('#toc-aside');
+                let $mainContent = $('#main-content');
+                $('#floating-toc-btn .btn-floating').click(function() {
+                    if ($tocAside.hasClass(expandedClass)) {
+                        $tocAside.removeClass(expandedClass).hide();
+                        $mainContent.removeClass('l9');
+                    } else {
+                        $tocAside.addClass(expandedClass).show();
+                        $mainContent.addClass('l9');
+                    }
+                    fixPostCardWidth('artDetail', 'prenext-posts');
+                });
+                
+            });
+        </script>
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2016-2022</span>
+            
+            <!-- <span id="year">2016</span> -->
+            <a href="/about" target="_blank">游梦</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">79.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2016";
+                    var startMonth = "10";
+                    var startDate = "1";
+                    var startHour = "12";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://beian.miit.gov.cn/" target="_blank">鄂ICP备15002117号-3</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/raphaelli/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:raphael_li@live.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1695849523" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1695849523" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/raphael96" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/raphael96" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon.min.js" async="async"></script>
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

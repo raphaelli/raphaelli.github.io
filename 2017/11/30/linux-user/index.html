@@ -1,0 +1,1367 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Linux下用户及用户权限管理, NS96,楠槡,游梦,游梦的博客">
+    <meta name="description" content="Ns96 | Raphael&#39;s blog | 游梦的博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Linux下用户及用户权限管理 | 木子楠槡</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">木子楠槡</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">木子楠槡</div>
+        <div class="logo-desc">
+            
+            Ns96 | Raphael&#39;s blog | 游梦的博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Linux下用户及用户权限管理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+    
+    #articleContent :focus {
+        outline: none;
+    }
+    
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+    
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+    
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+    
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+    
+    #toc-content ol {
+        padding-left: 10px;
+    }
+    
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+    
+    #toc-content .toc-link:hover {
+        color: #5db4cd;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+    
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+    
+    #toc-content .is-active-link {
+        color: #5db4cd;
+    }
+    
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+    
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+    
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2017-11-30
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-12-16
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.7k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>虽然很早就开始接触和使用Linux系列的系统，但是一直都是停留在使用层面，只能作为一个User，而并不是一个Developer，而要真正掌握Linux系列的系统，并以其作为开发环境进行开发，有很多知识是必须要了解的，就比如用户及用户权限管理。</p>
+</blockquote>
+<h2 id="用户和用户组文件"><a href="#用户和用户组文件" class="headerlink" title="用户和用户组文件"></a>用户和用户组文件</h2><p>在linux中，用户帐号，用户密码，用户组信息和用户组密码均是存放在不同的配置文件中的。</p>
+<p>在linux系统中，所创建的用户帐号和其相关信息(密码除外)均是存放在<code>/etc/passwd</code>配置文件中。由于所有用户对passwd文件均有读取的权限，因此密码信息并未保存在该文件中，而是保存在了<code>/etc/shadow</code>的配置文件中。</p>
+<p>在passwd文件中，一行定义一个用户帐号，每行均由多个不同的字段构成，各字段值间用<code>:</code>分隔，每个字段均代表该帐号某方面的信息。</p>
+<p>在刚安装完成的linux系统中，<code>passwd</code>配置文件已有很多帐号信息了，这些帐号是由系统自动创建的，他们是linux进程或部分服务程序正常工作所需要使用的账户，这些账户的最后一个字段的值一般为<code>/sbin/nologin</code>，表示该帐号不能用来登录linux系统。</p>
+<p>另外，若要使某个用户账户不能登录linux，只需设置该用户所使用的shell为<code>/sbin/nologin</code>即可。比如，对于FTP 账户，一般只允许登录和访问FTP服务器，不允许登录linux操作系统。</p>
+<p>若要让某用户没有telnet权限，即不允许该用户利用telnet远程登录和访问linux操作系统，则设置该用户所使用的shell为<code>/bin/true</code>即可。若要让用户没有telnet和ftp登录权限，则可设置该用户的 shell为<code>/bin/false</code>。</p>
+<p>在<code>/etc/shells</code>文件中，若没有<code>/bin/true</code>或<code>/bin/false</code>，则需要手动添加：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ～]# echo "/bin/false"&gt;&gt;/etc/shells
+[root@localhost ～]# echo "/bin/true"&gt;&gt;/etc/shells<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="用户密码文件"><a href="#用户密码文件" class="headerlink" title="用户密码文件"></a>用户密码文件</h2><p>为安全起见，用户真实的密码采用MD5加密算法加密后，保存在<code>/etc/shadow</code>配置文件中，该文件只有root用户可以读取。<br>与<code>passwd</code>文件类似，<code>shadow</code>文件也是每行定义和保存一个账户的相关信息。第一个字段为用户帐户名，第二个字段为账户的密码。</p>
+<h2 id="用户组帐号文件"><a href="#用户组帐号文件" class="headerlink" title="用户组帐号文件"></a>用户组帐号文件</h2><p>用户组帐号信息保存在<code>/etc/group</code>配置文件中，任何用户均可以读取。用户组的真实密码保存在<code>/etc/gshadow</code>配置文件中。  </p>
+<p>在<code>group</code>中，第一个字段代表用户组的名称，第二个字段为x，第三个为用户组的ID号，第四个为该用户组的用户成员列表，各用户名间用逗号分隔。</p>
+<h2 id="添加管理员用户"><a href="#添加管理员用户" class="headerlink" title="添加管理员用户"></a>添加管理员用户</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># sudo useradd -s /bin/bash -mr &lt;username&gt;
+# passwd &lt;username&gt;
+# sudo adduser &lt;username&gt; sudo
+# #检查
+# su -l<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>创建或添加新用户使用<code>useradd</code>命令来实现，其命令用法为:</p>
+<pre class="line-numbers language-none"><code class="language-none">useradd [option] username<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>该命令的option选项较多，常用的主要有：</p>
+<ul>
+<li>-c 注释      用户设置对账户的注释说明文字</li>
+<li>-d 主目录    指定用来取代默认的<code>/home/username</code>的主目录</li>
+<li>-m          若主目录不存在，则创建它。<code>-r</code>与<code>-m</code>相结合，可为系统账户创建主目录</li>
+<li>-M          不创建主目录</li>
+<li>-e date     指定账户过期的日期。日期格式为<code>MM/DD/YY</code></li>
+<li>-f days     帐号过期几日后永久停权。若指定为<code>-</code>，则立即被停权，若为<code>-1</code>，则关闭此功能</li>
+<li>-g 用户组     指定将用户加入到哪个用户组，该用户组必须存在</li>
+<li>-G 用户组列表 指定用户同时加入的用户组列表，各组用逗分隔</li>
+<li>-n          不为用户创建私有用户组</li>
+<li>-s shell    指定用户登录时使用的shell，默认为<code>/bin/bash</code></li>
+<li>-r          创建一个用户ID小于500的系统账户，默认不创建对应的主目录</li>
+<li>-u 用户ID    手动指定新用户的ID值，该值必须唯一，且大于499</li>
+<li>-p password 为新建用户指定登录密码。此处的password是对应登录密码经MD5加密后所得到的密码值，不实真实密码原文，因此在实际应用中，该参数选项使用较少，通常单独使用passwd命令来为用户设置登录密码。</li>
+</ul>
+<p>示例：<br>若要创建一个名为<code>nisj</code>的用户，并作为<code>babyfish</code>用户组的成员，则操作命令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ~]# useradd -g babyfish nisj
+[root@localhost ~]# id nisj
+uid=502(nisj) gid=500(babyfish) groups=500(babyfish)
+[root@localhost ~]# tail -1 /etc/passwd
+nisj:x:502:500::/home/nisj:/bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>添加用户时，若未用-g参数指定用户组，则系统默认会自动创建一个与用户帐号同名的私有用户组。若不需要创建该私有用户组，则可选用<code>-n</code>参数。</p>
+<p>比如，添加一个名为<code>nsj820</code>的账户，但不指定用户组，其操作结果为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ~]# useradd nsj820
+[root@localhost ~]# id nsj820
+uid=503(nsj820) gid=503(nsj820) groups=503(nsj820)
+[root@localhost ~]# tail -1 /etc/passwd
+nsj820:x:503:503::/home/nsj820:/bin/bash
+[root@localhost ~]# tail -2 /etc/passwd
+nisj:x:502:500::/home/nisj:/bin/bash
+nsj820:x:503:503::/home/nsj820:/bin/bash #系统自动创建了名为nsj820的用户组，ID号为503<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>创建用户账户时，系统会自动创建该用户对应的主目录，该目录默认放在<code>/home</code>目录下，若要改变位置，可以利用<code>-d</code>参数指定；对于用户登录时使用的shell，默认为<code>/bin/bash</code>，若要更改，则使用<code>-s</code>参数指定。</p>
+<p>例如，若要创建一个名为vodup的账户，主目录放在<code>/var</code>目录下，并指定登录shell为<code>/sbin/nologin</code>，则操作命令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ~]#  useradd -d /var/vodup -s /sbin/nologin vodup
+[root@localhost ~]# id vodup
+uid=504(vodup) gid=504(vodup) groups=504(vodup)
+[root@localhost ~]# tail -1 /etc/passwd
+vodup:x:504:504::/var/vodup:/sbin/nologin
+[root@localhost ~]# tail -1 /etc/group
+vodup:x:504:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="设置帐号属性"><a href="#设置帐号属性" class="headerlink" title="设置帐号属性"></a>设置帐号属性</h2><p>对于已创建好的用户，可使用usermod命令来修改和设置账户的各项属性，包括登录名，主目录，用户组，登录shell等，该命令用法为：<br><code>usermod [option] username</code></p>
+<h3 id="部分option选项"><a href="#部分option选项" class="headerlink" title="部分option选项"></a>部分option选项</h3><h4 id="改变用户帐户名"><a href="#改变用户帐户名" class="headerlink" title="改变用户帐户名"></a>改变用户帐户名</h4><p>使用-l参数来实现，命令用法为：<br>usermod -l 新用户名 原用户名<br>例如，若要将用户<code>nsj820</code>更名为<code>nsj0820</code>，则操作命令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ~]# usermod -l nsj0820 nsj820
+[root@localhost ~]# id nsj0820
+uid=503(nsj0820) gid=503(nsj820) groups=503(nsj820)
+[root@localhost ~]# tail -1 /etc/passwd
+nsj0820:x:503:503::/home/nsj820:/bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从输出结果可见，用户名已更改为<code>nsj0820</code>。主目录仍为原来的<code>/home/nsj820</code>，若也要更改为<code>/home/nsj0820</code>，则可通过执行以下命令来实现</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ~]# usermod -d /home/nsj0820 nsj0820
+[root@localhost ~]# id nsj0820
+uid=503(nsj0820) gid=503(nsj820) groups=503(nsj820)
+[root@localhost ~]# tail -1 /etc/passwd
+nsj0820:x:503:503::/home/nsj0820:/bin/bash
+[root@localhost home]# mv /home/nsj820 /home/nsj0820<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="锁定账户"><a href="#锁定账户" class="headerlink" title="锁定账户"></a>锁定账户</h4><p>若要临时禁止用户登录，可将该用户账户锁定。锁定账户可利用-L参数来实现，其命令用法为：  </p>
+<p><code>usermod -L 要锁定的账户</code>  </p>
+<p>linux锁定用户，是通过在密码文件shadow的密码字段前加<code>!</code>来标识该用户被锁定。</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# usermod -L nsj0820
+[root@localhost home]# tail -1 /etc/shadow
+nsj0820:!$1$JEW25RtU$X9kIdwJi/HPzSKMVe3EK30:16910:0:99999:7:::<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意</strong>：锁定后仍旧可以通过root用户su到锁定用户。</p>
+<h4 id="解锁账户"><a href="#解锁账户" class="headerlink" title="解锁账户"></a>解锁账户</h4><p>要解锁账户，可以使用带-U参数的<code>usermod</code>命令来实现。</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ~]# usermod -U nsj0820
+[root@localhost ~]# tail -1 /etc/shadow
+nsj0820:$1$JEW25RtU$X9kIdwJi/HPzSKMVe3EK30:16910:0:99999:7:::<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="删除账户"><a href="#删除账户" class="headerlink" title="删除账户"></a>删除账户</h2><p>要删除账户，可以使用userdel命令来实现，其用法为：</p>
+<p><code>userdel [-r] 帐户名</code></p>
+<p><code>-r</code>为可选项，若带上该参数，则在删除该账户的同时，一并删除该账户对应的主目录。</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost ~]# userdel -r nsj0820<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>若要设置所有用户账户密码过期的时间，则可通过修改<code>/etc/login.defs</code>配置文件中的<code>PASS_MAX_DAYS</code>配置项的值来实现，其默认值为<code>99999</code>，代表用户账户密码永不过期。其中<code>PASS_MIN_LEN</code>配置项用于指定账户密码的最小长度，默认为5个字符。</p>
+<h2 id="设置用户登录密码"><a href="#设置用户登录密码" class="headerlink" title="设置用户登录密码"></a>设置用户登录密码</h2><p>使用<code>passwd</code>命令来设置，其命令用法为：</p>
+<p><code>passwd [帐户名]</code></p>
+<p>若指定了帐户名称，则设置指定账户的登录密码，原密码自动被覆盖。只有root用户才有权设置指定账户的密码。一般用户只能设置或修改自己账户的密码（不带参数）。</p>
+<p>例如,若要设置nisj账户的登陆密码，则操作命令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# passwd nisj
+Changing password for user nisj.
+New password: 
+BAD PASSWORD: it is too short
+BAD PASSWORD: is too simple
+Retype new password: 
+passwd: all authentication tokens updated successfully.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>账户登录密码设置后，该账户就可以登录系统了。</p>
+<h2 id="锁定-解锁账户密码及查询密码状态、删除账户密码"><a href="#锁定-解锁账户密码及查询密码状态、删除账户密码" class="headerlink" title="锁定/解锁账户密码及查询密码状态、删除账户密码"></a>锁定/解锁账户密码及查询密码状态、删除账户密码</h2><p>在linux中，除了用户账户可被锁定外，账户密码也可被锁定，任何一方被锁定后，都将无法登录系统。只有root用户才有权执行该命令，锁定账户密码使用带-l选项的passwd命令，其用法为：  </p>
+<p><code>passwd -l 帐户名</code>  </p>
+<p><code>passwd -u 帐户名    #解锁账户密码</code></p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# passwd -l nisj
+Locking password for user nisj.
+passwd: Success
+[root@localhost home]# passwd -u nisj
+Unlocking password for user nisj.
+passwd: Success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>要查询当前账户的密码是否被锁定，可以使用带-S参数的passwd命令来实现，其用法为：</p>
+<p><code>passwd -S 账户名</code></p>
+<p>例如</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# passwd -S nisj
+nisj PS 2016-04-18 0 99999 7 -1 (Password set, MD5 crypt.)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>如要删除账户的密码，使用带-d参数的passwd命令来实现，该命令也只有root用户才有权执行，其用法为：</p>
+<p><code>passwd -d 帐户名</code></p>
+<p>帐户密码被删除后，将不能登录系统，除非重新设置密码。</p>
+<h2 id="创建用户组"><a href="#创建用户组" class="headerlink" title="创建用户组"></a>创建用户组</h2><p>用户和用户组属于多对多关系，一个用户可以同时属于多个用户组，一个用户组可以包含多个不同的用户。</p>
+<p>创建用户组使用groupadd命令，其命令用法为：</p>
+<p><code>groupadd [-r] 用户组名称</code></p>
+<p>若命令带有-r参数，则创建系统用户组，该类用户组的GID值小于500；若没有-r参数，则创建普通用户组，其GID值大于或等于500.</p>
+<h2 id="修改用户组属性"><a href="#修改用户组属性" class="headerlink" title="修改用户组属性"></a>修改用户组属性</h2><p>用户组创建后，根据需要可对用户组的相关属性进行修改。对用户组属性的修改，主要是修改用户组的名称和用户组的GID值。</p>
+<ul>
+<li>改变用户组的名称<br>若要对用户组进行重命名，可使用带-n参数的groupmod命令来实现，其用法为：<br><code>groupmod -n 新用户组名  原用户组名</code></li>
+</ul>
+<p>对于用户组改名，不会改变其GID的值</p>
+<p>比如，若要将student用户组更名为teacher用户组，则操作命令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# groupadd student
+[root@localhost home]# tail -1 /etc/group
+student:x:505:
+[root@localhost home]# groupmod -n teacher student
+[root@localhost home]# tail -1 /etc/group
+teacher:x:505:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>重设用户组的GID<br>用户组的GID值可以重新进行设置修改，但不能与已有用户组的GID值重复。对GID进行修改，不会改变用户名的名称。</li>
+</ul>
+<p>要修改用户组的GID，可使用带-g参数的groupmod命令，其用法为：<br><code>groupmod -g new_GID 用户组名称</code></p>
+<p>例如，若要将teacher组的GID更改为506，则操作命令为：</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]#  groupmod -g 506 teacher
+[root@localhost home]# tail -1 /etc/group
+teacher:x:506:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h2 id="删除用户组"><a href="#删除用户组" class="headerlink" title="删除用户组"></a>删除用户组</h2><p>删除用户组使用groupdel命令来实现，其用法为：<br><code>groupdel 用户组名</code><br>在删除用户组时，被删除的用户组不能是某个账户的私有用户组，否则将无法删除，若要删除，则应先删除引用该私有用户组的账户，然后再删除用户组。</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# groupdel teacher
+[root@localhost ~]# grep teacher /etc/group    #没有输出，说明teacher用户组以不存在，删除成功<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="添加用户到指定的组-从指定的组中移除用户"><a href="#添加用户到指定的组-从指定的组中移除用户" class="headerlink" title="添加用户到指定的组/从指定的组中移除用户"></a>添加用户到指定的组/从指定的组中移除用户</h2><p>可以将用户添加到指定的组，使其成为该组的成员。其实现命令为：<br><code>gpasswd -a 用户账户  用户组名</code></p>
+<p>若要从用户组中移除某用户，其实现命令为：<br><code>gpasswd -d 用户账户  用户组名</code></p>
+<p>例如:</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# groupadd student
+[root@localhost home]# gpasswd -a nisj student
+Adding user nisj to group student
+[root@localhost home]# id nisj
+uid=502(nisj) gid=500(babyfish) groups=500(babyfish),505(student)
+[root@localhost home]# gpasswd -d nisj student
+Removing user nisj from group student
+[root@localhost home]# id nisj
+uid=502(nisj) gid=500(babyfish) groups=500(babyfish)
+[root@localhost home]# groups nisj
+nisj : babyfish<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="设置用户组管理员"><a href="#设置用户组管理员" class="headerlink" title="设置用户组管理员"></a>设置用户组管理员</h2><p>添加用户到组和从组中移除某用户，除了root用户可以执行该操作外，用户组管理员也可以执行该操作。</p>
+<p>要将某用户指派为某个用户组的管理员，可使用以下命令来实现；</p>
+<p><code>gpasswd -A 用户账户 要管理的用户组</code></p>
+<p>命令功能：将指定的用户设置为指定用户组的用户管理员。用户管理员只能对授权的用户组进行用户管理(添加用户到组或从组中删除用户)，无权对其他用户组进行管理。</p>
+<pre class="line-numbers language-none"><code class="language-none">[root@localhost home]# gpasswd -a nisj student
+Adding user nisj to group student
+[root@localhost home]# gpasswd -A nisj student
+[root@localhost home]# useradd stu
+[root@localhost home]# gpasswd -a stu student
+Adding user stu to group student
+[root@localhost home]# groups stu
+stu : stu student
+[root@localhost home]# su - nisj
+[nisj@localhost ~]$ gpasswd -d stu student
+Removing user stu from group student
+[nisj@localhost ~]$ gpasswd -d stu stu
+gpasswd: Permission denied.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="用户其他相关"><a href="#用户其他相关" class="headerlink" title="用户其他相关"></a>用户其他相关</h2><p>另外，linux还提供了id，whoami和groups等命令，用来查看用户和组的状态。id命令用于显示当前用户的uid，gid和所属的用户组的列表；whoami用于查询当前用户的名称；groups用于产看指定用户所隶属的用户组。<br>同时，我们可以使用图形界面来管理用户和用户组，系统—&gt;管理—&gt;用户和组群可以打开相应的配置界面。</p>
+<p>附：将用户添加到组中，也可以如下操作</p>
+<p>将一个用户添加到用户组中，千万不能直接用：<br><code>usermod -G groupA </code><br>这样做会使你离开其他用户组，仅仅做为这个用户组 groupA 的成员。 </p>
+<p>应该用 加上<code> -a</code> 选项： </p>
+<p><code>usermod -a -G groupA user</code><br>(FC4: usermod -G groupA,groupB,groupC user)<br><code>-a</code> 代表 <code>append</code>， 也就是 将自己添加到 用户组groupA 中，而不必离开其他用户组。</p>
+<h2 id="切换用户和操作环境"><a href="#切换用户和操作环境" class="headerlink" title="切换用户和操作环境"></a>切换用户和操作环境</h2><p><code>su - username #用户和操作环境都改变</code></p>
+<p><code>su username  #只切换用户不切换操作环境及环境变量不变。还可用于退出超级权限</code></p>
+<p>参考：<a target="_blank" rel="noopener" href="http://blog.csdn.net/babyfish13/article/details/51188930">http://blog.csdn.net/babyfish13/article/details/51188930</a></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">游梦</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://ns96.com/2017/11/30/linux-user/">https://ns96.com/2017/11/30/linux-user/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">游梦</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo,douban,linkedin,twitter,facebook,google" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">如果你觉得不错，可以赏我一杯咖啡，当然，也可以是一杯肥宅快乐水。</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2017/12/07/ef-note/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="EntityFramework 介绍">
+                        
+                        <span class="card-title">EntityFramework 介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2017-12-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            游梦
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/dotNET/">
+                        <span class="chip bg-color">dotNET</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/09/28/html-lang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="HTML页面中的lang属性">
+                        
+                        <span class="card-title">HTML页面中的lang属性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-09-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            游梦
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Font-end/">
+                        <span class="chip bg-color">Font-end</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 木子楠槡<br />'
+            + '文章作者: 游梦<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;
+                目录
+            </div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+    <div id="floating-toc-btn" class="hide-on-med-and-down">
+        <a class="btn-floating btn-large bg-color">
+            <i class="fas fa-list-ul"></i>
+        </a>
+    </div>
+    
+
+        <script src="/libs/tocbot/tocbot.min.js"></script>
+        <script>
+            $(function() {
+                tocbot.init({
+                    tocSelector: '#toc-content',
+                    contentSelector: '#articleContent',
+                    headingsOffset: -($(window).height() * 0.4 - 45),
+                    collapseDepth: Number('0'),
+                    headingSelector: 'h2, h3, h4'
+                });
+
+                // modify the toc link href to support Chinese.
+                let i = 0;
+                let tocHeading = 'toc-heading-';
+                $('#toc-content a').each(function() {
+                    $(this).attr('href', '#' + tocHeading + (++i));
+                });
+
+                // modify the heading title id to support Chinese.
+                i = 0;
+                $('#articleContent').children('h2, h3, h4').each(function() {
+                    $(this).attr('id', tocHeading + (++i));
+                });
+
+                // Set scroll toc fixed.
+                let tocHeight = parseInt($(window).height() * 0.4 - 64);
+                let $tocWidget = $('.toc-widget');
+                $(window).scroll(function() {
+                    let scroll = $(window).scrollTop();
+                    /* add post toc fixed. */
+                    if (scroll > tocHeight) {
+                        $tocWidget.addClass('toc-fixed');
+                    } else {
+                        $tocWidget.removeClass('toc-fixed');
+                    }
+                });
+
+                
+                /* 修复文章卡片 div 的宽度. */
+                let fixPostCardWidth = function(srcId, targetId) {
+                    let srcDiv = $('#' + srcId);
+                    if (srcDiv.length === 0) {
+                        return;
+                    }
+
+                    let w = srcDiv.width();
+                    if (w >= 450) {
+                        w = w + 21;
+                    } else if (w >= 350 && w < 450) {
+                        w = w + 18;
+                    } else if (w >= 300 && w < 350) {
+                        w = w + 16;
+                    } else {
+                        w = w + 14;
+                    }
+                    $('#' + targetId).width(w);
+                };
+
+                // 切换TOC目录展开收缩的相关操作.
+                const expandedClass = 'expanded';
+                let $tocAside = $('#toc-aside');
+                let $mainContent = $('#main-content');
+                $('#floating-toc-btn .btn-floating').click(function() {
+                    if ($tocAside.hasClass(expandedClass)) {
+                        $tocAside.removeClass(expandedClass).hide();
+                        $mainContent.removeClass('l9');
+                    } else {
+                        $tocAside.addClass(expandedClass).show();
+                        $mainContent.addClass('l9');
+                    }
+                    fixPostCardWidth('artDetail', 'prenext-posts');
+                });
+                
+            });
+        </script>
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2016-2022</span>
+            
+            <!-- <span id="year">2016</span> -->
+            <a href="/about" target="_blank">游梦</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">79.1k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2016";
+                    var startMonth = "10";
+                    var startDate = "1";
+                    var startHour = "12";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+            <span id="icp"><img src="/medias/icp.png" style="vertical-align: text-bottom;" />
+                <a href="http://beian.miit.gov.cn/" target="_blank">鄂ICP备15002117号-3</a>
+            </span>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/raphaelli/" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:raphael_li@live.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1695849523" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1695849523" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/people/raphael96" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/raphael96" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon.min.js" async="async"></script>
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
